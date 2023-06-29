@@ -1,0 +1,30 @@
+﻿#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    setlocale(LC_ALL, "rus");
+    const int n = 5;
+    double x[n];
+    double y[n];
+    cout << "Введи данные по X: ";
+    for (int i = 0; i < n; i++) {
+        cin >> x[i];
+    }
+    cout << "Введи данные по Y: ";
+    for (int i = 0; i < n; i++) {
+        cin >> y[i];
+    }
+    double sum_x = 0, sum_y = 0, sum_xy = 0, sum_xx = 0;
+    for (int i = 0; i < n; i++) {
+        sum_x += x[i];
+        sum_y += y[i];
+        sum_xy += x[i] * y[i];
+        sum_xx += x[i] * x[i];
+    }
+    cout << "Сумма x: " << sum_x << endl << "Сумма y: " << sum_y << endl << "Сумма x*y: " << sum_xy << endl << "Сумма x^2: " << sum_xx << "\n";
+    double a = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x);
+    double b = (sum_y - a * sum_x) / n;
+    cout << "\n" << "Результат: " << "\n" << "y = " << a << " * x + " << b << endl;
+}
